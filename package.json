@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react-router-dom": "^4.3.2",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "3.1.0",
+    "react-scripts-ts": "4.0.8",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
@@ -25,5 +26,11 @@
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
     "typescript": "^3.4.5"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

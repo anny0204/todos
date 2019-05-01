@@ -1,14 +1,11 @@
 import * as React from 'react';
+import Routes from './config/Routes';
 import './App.sass';
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div>
-        Hello from App
-      </div>
-    );
-  }
+const App: React.SFC<any> = () => {
+  return (
+    <Routes />
+  )
 }
 
 export default App;
