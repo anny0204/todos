@@ -1,0 +1,49 @@
+@import '../../sass/variables'
+
+.task-list-container
+    margin-top: 
+    display: flex
+    flex-direction: column
+    .add-button-container
+        border-bottom: 1px solid $border-line-color
+        height: 8vh
+        display: flex
+        align-items: center
+        justify-content: center
+        button
+            border-radius: 20px
+            color: $primary-white
+            background-color: $main-header-color
+            text-transform: uppercase
+            font-weight: $title-font-weight
+            padding: 1.5vh 10vh
+            outline: none
+            cursor: pointer
+            font-size: 1.2rem
+            transition: all .2s ease-in-out
+            &:hover
+                transform: scale(1.1)
+    .list-item-container
+        border-bottom: 1px solid $border-line-color
+        height: 6vh
+        font-size: $main-font-size
+        cursor: pointer
+        transition: all .2s ease-in-out
+        font-weight: $main-font-weight
+        color: $main-header-color
+        &:hover
+            fott-weight: $title-font-weight
+            color: $primary-white
+        div
+            height: 6vh
+            line-height: 6vh
+        .icon-img
+            background-size: 100% 100%
+            background-repeat: no-repeat
+            width: 5vh
+            height: 5vh
+            margin-top: 0.5vh
+        .delete-container
+            opacity: .5
+            &:hover
+                opacity: 1
