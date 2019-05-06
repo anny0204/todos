@@ -9,8 +9,11 @@ body
     font-family: sans-serif
     background-color: $main-body-color
 
+main
+    padding-top: $header-height
+
 .container
-    margin: 0 $row-margin
+    margin: 0
 
 .text-white
     color: $primary-white
@@ -20,3 +23,26 @@ body
 
 .font-bold
     font-weight: $title-font-weight
+
+.d-flex
+    display: flex
+.d-inline-block
+    display: inline-block
+
+.w-10
+    width: 10%
+.w-20
+    width: 20%
+.w-30
+    width: 30%
+.w-50
+    width: 50%
+.w-80
+    width: 80%
+
+.f-left
+    float: left
+
+@media (min-width: 992px)
+    .container
+        margin: 0 $row-margin

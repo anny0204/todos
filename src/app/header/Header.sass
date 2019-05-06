@@ -1,13 +1,22 @@
 @import '../sass/variables'
-    
+
 header
-  display: flex
-  position: fixed
-  top: 0
-  align-items: center
-  justify-content: space-between
-  background: $main-header-color
-  width: $header-width
-  border-bottom: $header-border
-  height: $header-height
-  padding: 0 5vw
+    position: fixed
+    top: 0
+    background: $main-header-color
+    width: 100%
+    border-bottom: $header-border
+    height: $header-height
+    padding: 0 5vw
+    display: flex
+    align-items: center
+    h1
+        text-transform: uppercase
+    .date-container
+        padding-left: 20px
+        border-left: 1px solid #fff
+        justify-content: space-between
+
+@media (min-width: 992px)
+    header
+        width: $header-width
