@@ -1,0 +1,115 @@
+@import '../../sass/variables'
+
+@keyframes background-add
+    0%
+        background: rgba(0, 0, 0, 0)
+    100%
+        background: rgba(0, 0, 0, .6)
+
+@keyframes background-hide
+    0%
+        background: rgba(0, 0, 0, .6)
+    100%
+        background: rgba(0, 0, 0, .0)
+
+@keyframes add
+    from 
+        opacity: 0
+        transform: scale(2,2)
+    to 
+        opacity: 1
+        transform: scale(1,1)
+
+@keyframes leave
+    from 
+        opacity: 1
+        transform: scale(1,1)
+    to 
+        opacity: 0
+        transform: scale(2,2)
+
+.task-form
+    min-height: 90vh
+    margin-top: 10vh
+    position: absolute
+    top: 0
+    width: 100%
+    animation: background-add .2s ease alternate
+    animation-fill-mode: forwards
+    .mask
+        min-height: 90vh
+        width: 100%
+    .form-container
+        width: 100%
+        position: absolute
+        top: 14vh
+        margin: 0
+        box-shadow: 0px 20px 40px rgba(0,0,0,0.16)
+        background-color: $main-body-color
+        border: 1px solid #d4d5d9
+        padding: 6px 0 36px
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+        animation: add .4s ease alternate
+        -webkit-animation: add .4s ease alternate
+        .task-item-container
+            height: 6vh
+            width: 100%
+            padding: 0 15px
+            .task-item-name
+                color: $primary-white
+                font-size: $main-font-size
+                line-height: 6vh
+            .task-item-name-input
+                line-height: 4vh
+                border-radius: 10px
+                font-size: $main-font-size
+                border: 1px sollid $main-body-color
+                margin-top: 6px
+                padding: 0 5px
+            .task-item-name-checkbox
+                width: 3vh
+                height: 3vh
+                margin-top: 1.5vh
+                border-radius: 5px
+        .form-btns
+            display: flex
+            justify-content: space-around
+            padding: 18px 15px 0
+            width: 100%
+            button
+                border-radius: 20px
+                width: 390px
+                height: 82px
+                font-size: 24px
+                color: $primary-white
+                font-weight: 700
+                text-align: center
+                text-transform: uppercase
+                border: none
+            .agree-btn
+                background: $main-header-color
+                &.disabled
+                    background: #a2aaac
+                    border: 1px solid $main-header-color
+            .cancel-btn
+                background: #a2aaac
+
+.animation-background-hide
+    animation: background-hide .4s ease!important
+    -webkit-animation: background-hide .4s ease!important
+    animation-fill-mode: forwards
+
+.animation-hide
+    animation: leave .4s ease alternate !important
+    -webkit-animation: leave .4s ease alternate !important
+    animation-fill-mode: forwards
+
+@media (min-width: 992px)
+    .task-form
+        width: 80vw
+        .form-container
+            margin: 0 10vw
+            width: 60vw
