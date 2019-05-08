@@ -5,29 +5,20 @@ import Routes from './config/Routes'
 import './App.sass'
 
 interface IAppProps {
-    loadTasks: () => any
+    loadTasks: () => any,
+    allTasks: any[]
 }
 
 const App: React.SFC<IAppProps> = (props) => {
-  
-    React.useEffect(
-        () => {
-            localStorage.getItem('tasks')
-            return () => {
-                localStorage.getItem('tasks')
-            }
-        },
-        []
-    )
-
     return (
         <Routes />
     )
 }
 
 const mapStateToProps = (state: any) => {
-  return {
-  }
+    return {
+        allTasks: state.tasksList.allTasks
+    }
 }
 
 const mapDispatchToProps = {
