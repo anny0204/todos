@@ -3,8 +3,13 @@ const addTask = (task: any) => ({
     task
 })
 
+const editTask = (task: any) => ({
+    type: 'EDIT_TASK',
+    task
+})
+
 const loadTasks = () => ({
-    type: 'LOAD_TASK'
+    type: 'LOAD_TASKS'
 })
 
 const toggleAddEditTaskForm = (isAddEditTaskFormVisible: boolean) => ({
@@ -12,8 +17,21 @@ const toggleAddEditTaskForm = (isAddEditTaskFormVisible: boolean) => ({
     isAddEditTaskFormVisible
 })
 
+const removeTask = (taskId: number) => ({
+    type: 'REMOVE_TASK',
+    taskId
+})
+
+const setSelectedTask = (task: any) => ({
+    type: 'SET_SELECTED_TASK',
+    task
+})
+
 export {
     addTask,
     loadTasks,
-    toggleAddEditTaskForm
+    toggleAddEditTaskForm,
+    removeTask,
+    editTask,
+    setSelectedTask
 }

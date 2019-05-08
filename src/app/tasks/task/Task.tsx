@@ -10,25 +10,28 @@ import './Task.sass'
 interface ITaskProps {
     allTasks: any[],
     addTask: (task: any) => any,
-    toggleAddEditTaskForm: (isAddEditTaskFormVisible: boolean) => any
+    toggleAddEditTaskForm: (isAddEditTaskFormVisible: boolean) => any,
+    selectedTask: any,
+    editTask: (task: any) => any
 }
 
 const Task: React.SFC<ITaskProps> = (props) => {
+    const { selectedTask } = props
     const [isTaskFormVisible, setIsTaskFormVisible] = React.useState(true)
     const now: Date = new Date()
-    const [taskDate, setTaskDate] = React.useState(now)
-    const [taskName, setTaskName] = React.useState('')
-    const [isTaskComplete, setIsTaskComplete] = React.useState(false)
+    const [taskDate, setTaskDate] = React.useState(selectedTask.date ? new Date(selectedTask.date) : now)
+    const [taskName, setTaskName] = React.useState(selectedTask.name ? selectedTask.name : '')
+    const [isTaskCompleted, setIsTaskComplete] = React.useState(selectedTask.completed ? selectedTask.completed : false)
 
     const saveTask = () => {
         const task = {
-            id: Date.now(),
+            id: selectedTask.id ? selectedTask.id : Date.now(),
             name: taskName,
             date: taskDate,
             description: 'Lorem ipsum',
-            completed: isTaskComplete
+            completed: isTaskCompleted
         }
-        props.addTask(task)
+        selectedTask.id ? props.editTask(task) : props.addTask(task)
         setIsTaskFormVisible(false)
         setTimeout(() => props.toggleAddEditTaskForm(false), 300)
     }
@@ -38,9 +41,8 @@ const Task: React.SFC<ITaskProps> = (props) => {
         setTimeout(() => props.toggleAddEditTaskForm(false), 300)
     }
 
-    const changeTaskName = (e: any) => {
+    const onTaskNameChange = (e: any) => {
         setTaskName(e.target.value)
-        setTaskDate(now)
     }
 
     const onTaskDateChange = (e: any) => {
@@ -48,7 +50,7 @@ const Task: React.SFC<ITaskProps> = (props) => {
     }
 
     const onTaskDoneChange = (e: any) => {
-        setIsTaskComplete(!isTaskComplete)
+        setIsTaskComplete(!isTaskCompleted)
     }
 
     return (
@@ -57,7 +59,7 @@ const Task: React.SFC<ITaskProps> = (props) => {
             <div className={isTaskFormVisible ? 'form-container' : 'form-container animation-hide' }>
                 <div className="task-item-container">
                     <div className="f-left w-20 task-item-name">Name of task: </div>
-                    <input className="w-80 task-item-name-input" type="text" value={taskName} onChange={(e) => changeTaskName(e)} />
+                    <input className="w-80 task-item-name-input" type="text" value={taskName} onChange={(e) => onTaskNameChange(e)} />
                 </div>
                 <div className="task-item-container">
                     <div className="f-left w-20 task-item-name">Date: </div>
@@ -65,7 +67,7 @@ const Task: React.SFC<ITaskProps> = (props) => {
                 </div>
                 <div className="task-item-container">
                     <div className="f-left w-20 task-item-name">Complete: </div>
-                    <input type="checkbox" className="task-item-name-checkbox" checked={isTaskComplete} onChange={(e) => onTaskDoneChange(e)} />
+                    <input type="checkbox" className="task-item-name-checkbox" checked={isTaskCompleted} value={isTaskCompleted} onChange={(e) => onTaskDoneChange(e)} />
                 </div>
                 <div className="form-btns">
                     <button disabled={taskName === ''} className={taskName !== '' ? 'agree-btn' : 'agree-btn disabled'} onClick={() => saveTask()}>
@@ -82,7 +84,8 @@ const Task: React.SFC<ITaskProps> = (props) => {
 
 const mapStateToProps = (state: any) => {
     return {
-        allTasks: state.tasksList.allTasks
+        allTasks: state.tasksList.allTasks,
+        selectedTask: state.tasksList.selectedTask
     }
   }
   
